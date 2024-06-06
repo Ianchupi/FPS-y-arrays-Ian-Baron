@@ -6,21 +6,25 @@ public class PersonajeScript : MonoBehaviour
 {
 
     public int nivelHambre;
-    
+
     // Start is called before the first frame update
-   
+
 
     // Update is called once per frame
-    
-    void ConsumirAlimento(int ValorAlimentario)
+
+
+
+    void TomarAlimento(int ValAlimentario)
     {
-        nivelHambre -= ValorAlimentario;
+        nivelHambre -= ValAlimentario;
     }
-    
-    void Update()
-
-
+    private void OnTriggerEnter(Collider other)
     {
-        
+        AlimentoScript alimento;
+        alimento = other.GetComponent<AlimentoScript>();
+        if (alimento)
+        {
+            TomarAlimento(alimento.ValAlimentario);
+        }
     }
 }
